@@ -1,35 +1,45 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from "react";
+import DenunciaForm from "./components/DenunciaForm";
+import DenunciaList from "./components/DenunciaList";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [denuncias, setDenuncias] = useState(() =>
+    JSON.parse(localStorage.getItem("denuncias")) || []
+  );
+
+  useEffect(() => {
+    localStorage.setItem("denuncias", JSON.stringify(denuncias));
+  }, [denuncias]);
+
+  const agregarDenuncia = (nueva) => {
+    setDenuncias([...denuncias, nueva]);
+  };
+
+  const eliminarDenuncia = (id) => {
+    setDenuncias(denuncias.filter((d) => d.id !== id));
+  };
+
+  const cambiarEstado = (id) => {
+    setDenuncias(
+      denuncias.map((d) =>
+        d.id === id ? { ...d, estado: siguienteEstado(d.estado) } : d
+      )
+    );
+  };
+
+  const siguienteEstado = (estado) => {
+    if (estado === "pendiente") return "en revisión";
+    if (estado === "en revisión") return "resuelto";
+    return "resuelto";
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="container mt-4">
+      <h1 className="mb-4">Registro de Denuncias Ciudadanas</h1>
+      <DenunciaForm onAgregar={agregarDenuncia} />
+      <DenunciaList denuncias={denuncias} onEliminar={eliminarDenuncia} onCambiarEstado={cambiarEstado} />
+    </div>
+  );
 }
 
-export default App
+export default App;
