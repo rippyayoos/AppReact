@@ -25,21 +25,6 @@ Aplicación web desarrollada con React para registrar, visualizar y filtrar denu
 
 ---
 
-## 🧩 Estructura del proyecto
-
-/src
-├── components
-│ ├── ClimaActual.jsx # Componente para mostrar el clima
-│ ├── DenunciaForm.jsx # Formulario para agregar denuncias
-│ ├── DenunciaList.jsx # Lista de denuncias
-│ └── Filtros.jsx # Filtros por tipo y fecha
-├── services
-│ └── api.js # Servicio para consumir Open-Meteo
-├── App.jsx
-└── index.js
-
-
----
 
 ## 📦 Instalación y ejecución
 
@@ -57,6 +42,8 @@ npm install
 npm start
 
 La aplicación estará disponible en: http://localhost:3000
-🌤️ Clima actual
+```
+
+## 🌤️ Clima actual
 
 La app solicita permiso de geolocalización para mostrar el clima actual. En caso de que el usuario no lo permita, se mostrará un mensaje de error.
