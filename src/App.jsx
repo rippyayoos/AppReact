@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Filtros from './components/Filtros';
 import DenunciaForm from './components/DenunciaForm';
 import DenunciaList from './components/DenunciaList';
+import ClimaActual from './components/ClimaActual';
 import './App.css';
 
 function App() {
@@ -58,6 +59,7 @@ function App() {
         onEliminar={eliminarDenuncia}
         onCambiarEstado={cambiarEstado}
       />
+      <ClimaActual />
     </div>
   );
 }
