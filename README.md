@@ -31,7 +31,7 @@ Aplicación web desarrollada con React para registrar, visualizar y filtrar denu
 1. Clona este repositorio:
 
 ```bash
-git clone https://github.com/tu-usuario/registro-denuncias-ciudadanas.git
+git clone https://github.com/rippyayoos/AppReact.git
 
     Instala las dependencias:
 
