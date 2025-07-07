@@ -15,6 +15,13 @@ export default function DenunciaForm({ onAgregar }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const { ubicacion, tipo, descripcion, fecha } = denuncia;
+
+    if (!ubicacion || !tipo || !descripcion || !fecha) {
+      alert("Completa todos los campos");
+      return;
+    }
+
     onAgregar({ ...denuncia, id: Date.now() });
     setDenuncia({
       ubicacion: "",
