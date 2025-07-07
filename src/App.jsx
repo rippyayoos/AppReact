@@ -51,7 +51,7 @@ function App() {
 
   return (
     <div className="container mt-4">
-      <h1 className="mb-4">Registro de Denuncias Ciudadanas</h1>
+      <h1 className="mb-4 text-primary">Registro de Denuncias Ciudadanas</h1>
       <Filtros tipo={filtroTipo} fecha={filtroFecha} onFiltro={filtrar} />
       <DenunciaForm onAgregar={agregarDenuncia} />
       <DenunciaList
