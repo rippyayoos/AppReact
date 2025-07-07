@@ -24,7 +24,8 @@ const ClimaActual = () => {
     }
   }, []);
 
-  if (error) return <div style={{ color: 'red' }}>{error}</div>;
+  if (error) return <div className="alert alert-danger">{error}</div>;
+  if (!clima) return <div className="text-muted">Cargando clima...</div>;
 
   return clima ? (
      <div className="card mt-4"> <div className="card-body"> <h5 className="card-title">Clima Actual</h5> <p className="card-text">Temperatura: {clima.temperature}°C</p> <p className="card-text">Viento: {clima.windspeed} km/h</p> </div> </div>
