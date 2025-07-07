@@ -1,4 +1,7 @@
 export default function DenunciaList({ denuncias, onEliminar, onCambiarEstado }) {
+  if (denuncias.length === 0) {
+    return <p className="text-muted">No hay denuncias registradas.</p>;
+  }
   return (
     <div>
       {denuncias.map((d) => (
